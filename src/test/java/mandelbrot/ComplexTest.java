@@ -2,6 +2,10 @@ package mandelbrot;
 
 import org.junit.jupiter.api.Test;
 
+import javax.naming.OperationNotSupportedException;
+
+import static mandelbrot.Complex.ONE;
+import static mandelbrot.Complex.ZERO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -57,8 +61,8 @@ public class ComplexTest {
 
     @Test
     void testZero(){
-        assertEquals(0, Complex.ZERO.getReal());
-        assertEquals(0, Complex.ZERO.getImaginary());
+        assertEquals(0, ZERO.getReal());
+        assertEquals(0, ZERO.getImaginary());
     }
 
     @Test
@@ -79,12 +83,12 @@ public class ComplexTest {
 
     @Test
     void testReciprocalOfZero(){
-        assertThrows(ArithmeticException.class, ()->Complex.ZERO.reciprocal());
+        assertThrows(ArithmeticException.class, ()->ZERO.reciprocal());
     }
 
     @Test
     void testSubstract(){
-        assertEquals(minusOne, Complex.ZERO.subtract(Complex.ONE));
+        assertEquals(minusOne, ZERO.subtract(Complex.ONE));
         assertEquals(oneMinusI, Complex.ONE.subtract(Complex.I));
         assertEquals(new Complex(real-1,imaginary-1),
                 new Complex(real, imaginary).subtract(onePlusI));
@@ -99,12 +103,12 @@ public class ComplexTest {
 
     @Test
     void testDivideByZero(){
-        assertThrows(ArithmeticException.class, ()->Complex.ONE.divide(Complex.ZERO));
+        assertThrows(ArithmeticException.class, ()->Complex.ONE.divide(ZERO));
     }
 
     @Test
     void testConjugate(){
-        assertEquals(Complex.ZERO, Complex.ZERO.conjugate());
+        assertEquals(ZERO, ZERO.conjugate());
         assertEquals(Complex.ONE, Complex.ONE.conjugate());
         assertEquals(onePlusI, oneMinusI.conjugate());
         assertEquals(new Complex(real, -imaginary), new Complex(real, imaginary).conjugate());
@@ -138,5 +142,9 @@ public class ComplexTest {
         assertEquals(new Complex(real,0),Complex.real(real));
     }
 
+    @Test
+    void testAdd() {
+        assertEquals(new Complex(3,0), two.add(ONE));
+    }
 
 }
