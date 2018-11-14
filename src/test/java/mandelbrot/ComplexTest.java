@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import javax.naming.OperationNotSupportedException;
 
+import static mandelbrot.Complex.I;
 import static mandelbrot.Complex.ONE;
 import static mandelbrot.Complex.ZERO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,6 +20,7 @@ public class ComplexTest {
     private final Complex two = new Complex(2,0);
     private final double real = -12;
     private final double imaginary = 10;
+
 
 
     @Test
@@ -145,6 +147,8 @@ public class ComplexTest {
     @Test
     void testAdd() {
         assertEquals(new Complex(3,0), two.add(ONE));
+        assertEquals(new Complex(0,3), twoI.add(I));
     }
+
 
 }
