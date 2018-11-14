@@ -135,6 +135,8 @@ public class ComplexTest {
     }
     @Test
     void testComplexReal(){
-        assertEquals(0, Complex.ZERO.getImaginary());
+        assertEquals(new Complex(real,0),Complex.real(real));
     }
+
+
 }
