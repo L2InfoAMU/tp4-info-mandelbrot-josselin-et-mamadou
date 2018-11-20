@@ -161,4 +161,14 @@ public class ComplexTest {
     }
 
 
+
+    @Test
+    void testScale(){
+        assertEquals(onePlusI,onePlusI.scale(1));
+        assertEquals(twoI, Complex.I.scale(2));
+        assertEquals(new Complex(real*2,imaginary*2),
+                new Complex(real, imaginary).scale(2));
+    }
+
+
 }
