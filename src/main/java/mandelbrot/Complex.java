@@ -156,7 +156,8 @@ public class Complex {
             throw new ArithmeticException("divide by zero");
         }
         double m = squaredModulus();
-        return new Complex(real / m, imaginary / m);
+        return new Complex(real / m, -imaginary / m);
+
     }
 
     /**
@@ -185,8 +186,8 @@ public class Complex {
      */
     Complex pow(int p) {
         if (p == 0)
-            return ZERO;
-        Complex result = (this.multiply(this)).pow(p / 2);
+            return ONE;
+        Complex result = (this.multiply(this)).pow(p-1);
         if (p % 2 == 1)
             result = result.multiply(this);
         return result;

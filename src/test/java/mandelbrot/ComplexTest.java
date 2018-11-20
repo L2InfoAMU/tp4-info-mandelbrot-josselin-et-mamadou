@@ -161,13 +161,44 @@ public class ComplexTest {
     }
 
 
-
     @Test
     void testScale(){
         assertEquals(onePlusI,onePlusI.scale(1));
         assertEquals(twoI, Complex.I.scale(2));
         assertEquals(new Complex(real*2,imaginary*2),
                 new Complex(real, imaginary).scale(2));
+    }
+
+    @Test
+    void testSquarredModulus(){
+        assertEquals(2, onePlusI.squaredModulus());
+        assertEquals(4, two.squaredModulus());
+        assertEquals(1,I.squaredModulus());
+        assertEquals(real * real + imaginary * imaginary , new Complex(real,imaginary).squaredModulus());
+    }
+
+    @Test
+    void testModulus(){
+        assertEquals(Math.sqrt(2), Math.sqrt(onePlusI.squaredModulus()));
+        assertEquals(Math.sqrt(4), Math.sqrt(two.squaredModulus()));
+        assertEquals(Math.sqrt(1),Math.sqrt(I.squaredModulus()));
+        assertEquals(Math.sqrt(real * real + imaginary * imaginary) , Math.sqrt(new Complex(real,imaginary).squaredModulus()));
+    }
+
+    @Test
+    void testPow(){
+        assertEquals(new Complex(4,0), two.pow(2));
+        assertEquals(new Complex(1,0), two.pow(0));
+        assertEquals(new Complex(0,8), twoI.pow(3));
+        assertEquals(new Complex(real*real*real,imaginary*imaginary*imaginary),new Complex(real, imaginary).pow(3));
+
+    }
+
+    @Test
+    void testEquals(){
+        assertEquals(new Complex(1,1),onePlusI);
+        assertEquals(new Complex(0,0),Complex.ZERO);
+        assertEquals(new Complex(real,imaginary), new Complex(real,imaginary));
     }
 
 
